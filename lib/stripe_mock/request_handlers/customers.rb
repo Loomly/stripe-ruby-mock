@@ -67,6 +67,10 @@ module StripeMock
         metadata = cus.delete(:metadata) || {}
         metadata_updates = params.delete(:metadata) || {}
 
+        # get existing and pending invoice_settings
+        invoice_settings = cus.delete(:invoice_settings) || {}
+        invoice_settings_updates = params.delete(:invoice_settings) || {}
+
         # Delete those params if their value is nil. Workaround of the problematic way Stripe serialize objects
         params.delete(:sources) if params[:sources] && params[:sources][:data].nil?
         params.delete(:subscriptions) if params[:subscriptions] && params[:subscriptions][:data].nil?
@@ -79,6 +83,7 @@ module StripeMock
         end
         cus.merge!(params)
         cus[:metadata] = {**metadata, **metadata_updates}
+        cus[:invoice_settings] = {**invoice_settings, **invoice_settings_updates}
 
         if params[:source]
           if params[:source].is_a?(String)
