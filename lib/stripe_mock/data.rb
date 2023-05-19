@@ -404,6 +404,7 @@ module StripeMock
         },
         subtotal: lines.map {|line| line[:amount]}.reduce(0, :+),
         customer: "test_customer",
+        collection_method: nil,
         object: 'invoice',
         attempted: false,
         application_fee: nil,
