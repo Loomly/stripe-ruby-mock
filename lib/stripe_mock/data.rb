@@ -122,6 +122,24 @@ module StripeMock
       }.merge(params)
     end
 
+    def self.mock_tax_id(params)
+      {
+        id: 'txi_f2Pr4sJAEJ4IA',
+        object: 'tax_id',
+        country: 'DE',
+        created: 123456789,
+        customer: nil,
+        livemode: false,
+        type: 'eu_vat',
+        value: 'DE123456789',
+        verification: nil,
+        owner: {
+          type: 'self',
+          customer: nil
+        }
+      }.merge(params)
+    end
+
     def self.mock_tax_rate(params)
       {
         id: 'test_cus_default',
